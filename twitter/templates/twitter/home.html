@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+  <style>
+    .home-container{
+        display: flex
+    }
+    .home-middle{
+        padding: 20px 70px;
+        flex: 6;
+        background-color: #f6f3f3;
+    }
+  </style>
+  {% include 'twitter/navbar.html' %}
+    <div class="home-container" >
+        {% include 'twitter/leftbar.html' %}
+     {% comment %} lightbar {% endcomment %}
+      
+     <div class="home-middle">
+        {% include  'twitter/share.html' %}
+        {% include  'twitter/posts.html' %}
+        
+     </div>
+      {% comment %} posts {% endcomment %}
+      
+      {% include 'twitter/rightbar.html' %}
+
+
+      {% for us in usf %}
+        <div> {{us.name}} </div>
+      {% endfor %}
+    </div>
+ 
+
+{% endblock content %}

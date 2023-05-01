@@ -1,0 +1,46 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/posts.css' %}" />
+
+<div class="posts">
+  {% for post in posts %}
+
+  <div class="post">
+    <div class="container">
+      <div class="user">
+        <div class="userInfo">
+          <img src="{{request.user.avatar.url}}" />
+          <div class="details">
+            <a href="{% url 'user-profile' post.author.id %}">
+              <span class="name">@{{post.author.username}}</span>
+            </a>
+            <span class="date"></span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <p>{{post.content}}</p>
+        {% if post.image %}
+        <img src="{{post.image.url}}" />
+        {% endif %}
+      </div>
+      <div class="info">
+        <div class="item">
+          {% if user in post.likes.all %}
+          <a href="{% url 'post-like' post.id%}"
+            ><i class="fa fa-heart" style="color: red"></i
+          ></a>
+          {% else %}
+          <a href="{% url 'post-like' post.id %}"
+            ><i class="fa fa-heart-o" style="color: red"></i
+          ></a>
+          {% endif %}
+        </div>
+        <div class="item">{{post.likes_count}}</div>
+        <div class="item">See Comments</div>
+        <div class="item">Share</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

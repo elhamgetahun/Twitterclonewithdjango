@@ -1,0 +1,88 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/leftbar.css' %}" /> 
+
+<div class="leftbar">
+    <div class="container">
+      <div class="menu">
+        <div class="user">
+            <img src="{{request.user.avatar.url}}" />
+            <span>{{request.user.username}}</span>
+        </div>
+        <div class="item">
+          <img src=" {% static 'images/assets/1.png' %} " alt="" />
+          <span>Friends</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/2.png' %} " alt="" />
+
+          <span>Groups</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/3.png' %} " alt="" />
+
+          <span>Marketplace</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/4.png' %} " alt="" />
+
+          <span>Watch</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/5.png' %} " alt="" />
+         
+          <span>Memories</span>
+        </div>
+      </div>
+
+      <hr />
+      <div class="menu">
+        <span>Your shortcuts</span>
+        <div class="item">
+            <img src=" {% static 'images/assets/6.png' %} " alt="" />
+         
+          <span>Events</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/7.png' %} " alt="" />
+          
+          <span>Gaming</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/8.png' %} " alt="" />
+         
+          <span>Gallery</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/9.png' %} " alt="" />
+        
+          <span>Videos</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/10.png' %} " alt="" />
+         
+          <span>Messages</span>
+        </div>
+      </div>
+      <hr />
+      <div class="menu">
+        <span>Others</span>
+        <div class="item">
+            <img src=" {% static 'images/assets/11.png' %} " alt="" />
+
+          <span>Fundraiser</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/12.png' %} " alt="" />
+         
+          <span>Tutorials</span>
+        </div>
+        <div class="item">
+            <img src=" {% static 'images/assets/13.png' %} " alt="" />
+        
+          <span>Courses</span>
+        </div> 
+      </div>
+    </div>
+  </div>

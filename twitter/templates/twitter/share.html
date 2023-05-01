@@ -1,0 +1,47 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/share.css' %}" /> 
+<style>
+    #file{
+        display:none
+    }
+</style>
+<div class="share">
+    <form class="container" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+      <div class="top">
+        <div class="left">
+            <img src="{{request.user.avatar.url}}" />
+          <input
+            type="text"
+            placeholder="What's on your mind {{request.user.username}} "
+            name="content"
+          />
+        </div>
+        <div class="right">
+          {% comment %} {file && (
+            <img class="file" alt="" src={URL.createObjectURL(file)} />
+          )} {% endcomment %}
+        </div>
+      </div>
+      <hr />
+      <div class="bottom">
+        <div class="left">
+          <input
+            type="file"
+            id="file"
+            name="image"
+          />
+          <label for="file">
+            <div class="item">
+                <img src=" {% static 'images/assets/img.png' %} " alt="" />
+              <span>Add Image</span>
+            </div>
+          </label>
+        </div>
+        <div class="right">
+          <button>Tweet</button>
+        </div>
+      </div>
+    </form>
+  </div>

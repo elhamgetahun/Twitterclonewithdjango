@@ -1,0 +1,75 @@
+.login {
+    height: 100vh;
+    background-color: rgb(193, 190, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login .card {
+    display: flex;
+    width: 50%;
+    border-radius: 10px;
+    background-color: white;
+    min-height: 500px;
+    overflow: hidden;
+  }
+  .login .card .left {
+    flex: 1;
+    background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)), url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 30px;
+    color: white;
+  }
+  .login .card .left h1 {
+    text-align: center;
+    font-size: 90px;
+    line-height: 90px;
+    text-transform: capitalize;
+  }
+  .login .card .left span {
+    font-size: 14px;
+  }
+  .login .card .left button {
+    background-color: white;
+    border: none;
+    width: 50%;
+    padding: 10px;
+  }
+  .login .card .right {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+  }
+  .login .card .right h1 {
+    text-transform: capitalize;
+    font-size: 60px;
+    color: purple;
+    letter-spacing: 2px;
+  }
+  .login .card .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 1px;
+  }
+  .login .card .right form input {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 20px 10px;
+  }
+  .login .card .right form button {
+    background-color: white;
+    width: 50%;
+    padding: 10px;
+    background-color: rgb(160, 106, 210);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }

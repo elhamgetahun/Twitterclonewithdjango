@@ -1,0 +1,25 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/navbar.css' %}" /> 
+<div class="navbar">
+<div class="left">
+    <a>
+      <span>Novasocial</span>
+    </a>
+    
+    <div class="search">
+      
+      <input type="text" placeholder="Search..." />
+    </div>
+  </div>
+  <div class="right">
+    <div>
+        <a href=" {% url 'logout' %}" >log out</a>
+    </div>
+    <div class="user">
+        <img src="{{request.user.avatar.url}}" />
+        <span>{{request.user.username}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+  <style>
+    .profile-container{
+        display: flex
+    }
+    .profile-middle{
+        padding: 20px 70px;
+        flex: 6;
+        background-color: #f6f3f3;
+    }
+  </style>
+   {% include 'twitter/navbar.html' %}
+    <div class="profile-container" >
+        {% include 'twitter/leftbar.html' %}
+     {% comment %} lightbar {% endcomment %}
+      
+     <div class="profile-middle">
+       {% include  'twitter/profile_middle.html' %}
+
+     </div>
+      {% comment %} posts {% endcomment %}
+      
+      {% include 'twitter/rightbar.html' %}
+     
+    </div>
+ 
+
+{% endblock content %}

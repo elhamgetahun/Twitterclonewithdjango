@@ -1,0 +1,45 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/pofile.css' %}" />
+
+<div class="profile">
+  <div class="images">
+    <img src="{{user.coveravatar.url}}" alt="" class="cover" />
+    <img src="{{user.avatar.url}}" alt="" class="profilePic" />
+  </div>
+  <div class="profileContainer">
+    <div class="uInfo">
+      <div class="left"></div>
+      <div class="center">
+        <span>{{user.name}}</span>
+        <div class="info"></div>
+        <button>
+          {% if request.user == user %}
+          <a href="{% url 'update-user' %}" class="btn btn--main btn--pill"
+            >Edit Profile</a
+          >
+          {% else %} {% if is_following %}
+          <!-- Display Unfollow button -->
+          <form method="post" action="{% url 'follow-user' user.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+              Unfollow
+            </button>
+          </form>
+          {% else %}
+          <!-- Display Follow button -->
+          <form method="post" action="{% url 'follow-user' user.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+              Follow
+            </button>
+          </form>
+          {% endif %} {% endif %}
+        </button>
+      </div>
+      <div class="right"></div>
+      {% comment %} {% include 'twitter/update_user.html' %} {% endcomment %}
+    </div>
+    {% include 'twitter/posts.html' %}
+  </div>
+</div>
