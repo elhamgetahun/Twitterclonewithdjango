@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'twitter',
         'HOST':'localhost',
         "USER": 'root',
-        'PASSWORD':"Fefu1234**"
+        'PASSWORD':"mine12@!"
     }
 }
 
