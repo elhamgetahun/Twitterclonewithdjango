@@ -9,13 +9,13 @@
   </div>
   <div class="profileContainer">
     <div class="uInfo">
-      <div class="left"></div>
+      {% comment %} <div class="left"></div> {% endcomment %}
       <div class="center">
         <span>{{user.name}}</span>
+        <p> {{numFollowing}} following  {{numFollower}} followers</p>
         <div class="info"></div>
-        <button>
           {% if request.user == user %}
-          <a href="{% url 'update-user' %}" class="btn btn--main btn--pill"
+          <a href="{% url 'update-user' %}" class="btn btn-info"
             >Edit Profile</a
           >
           {% else %} {% if is_following %}
@@ -37,7 +37,7 @@
           {% endif %} {% endif %}
         </button>
       </div>
-      <div class="right"></div>
+      {% comment %} <div class="right"></div> {% endcomment %}
       {% comment %} {% include 'twitter/update_user.html' %} {% endcomment %}
     </div>
     {% include 'twitter/posts.html' %}

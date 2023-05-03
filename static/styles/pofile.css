@@ -52,11 +52,12 @@
     color: #555;
   }
    .profile .profileContainer .uInfo .center {
+    margin: 30px;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
   }
    .profile .profileContainer .uInfo .center span {
     font-size: 30px;

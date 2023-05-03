@@ -65,13 +65,27 @@ def home(request):
     if request.user.is_authenticated: 
         user = request.user  
         following = Follow.objects.filter(follower__id=request.user.id)
-        
+        follower = Follow.objects.filter(following__id = request.user.id)
+        #   the users that I am following 
         users_following = [follow.following for follow in following]
+        numberOfFollowing =  len(users_following)
+        numberOfFollower = follower.count()        
+        # Get the users who follow the users you follow
+        following_followers = Follow.objects.filter(following__in=users_following)
+        users_followed_by_following = [ff.follower for ff in following_followers]
+         
+        # Exclude the users you follow and the users who follow you
+        suggestions = User.objects.exclude(id=request.user.id).exclude(id__in=[u.id for u in users_following]).exclude(id__in=[u.id for u in users_followed_by_following]).distinct()
+        print("user-followeing", users_following)
+        print("folowing_users", following_followers)
+        print("users_followedbyfollowing", users_followed_by_following)
+        print("sugetions", suggestions)
         # users_following = User.objects.filter(id__in=following)
         # feth the user they that i am following   
         #  from fllow follower_id = requet.user.id   // i know the users i am
         #  from  user.filter(id = ff)
         posts_fol = Post.objects.filter(Q(author=user) | Q(author__in=users_following))
+        # posts_fol = Post.objects.all()
         print("following",following)
         # print("uer_iam_following", users_following)
         form = PostForm(request.POST, request.FILES or None)
@@ -89,14 +103,25 @@ def home(request):
             return redirect('home')
 
         posts = posts_fol
-        return render(request, 'twitter/home.html', {"posts": posts, "form": form})
+        context = {"posts": posts,"following":following , "suggetedUsers":suggestions, "form": form}
+        return render(request, 'twitter/home.html', context)
     else:
         posts = posts_fol
-        context = {"posts": posts," following":following , "usf":users_following}
+        context = {"posts": posts,"following":following , "suggetedUsers":suggestions}
         return render(request, 'twitter/home.html', context)
 
 @login_required(login_url='login')
 def userProfile(request, pk):
+    following = Follow.objects.filter(follower__id=request.user.id)
+    follower = Follow.objects.filter(following__id = request.user.id)    
+    users_following = [follow.following for follow in following]
+        # Get the users who follow the users you follow
+    following_followers = Follow.objects.filter(following__in=users_following)
+    users_followed_by_following = [ff.follower for ff in following_followers]
+    numberofFollowing = following.count()
+    numberOfFollower = follower.count()
+# Exclude the users you follow and the users who follow you
+    suggestions = User.objects.exclude(id=request.user.id).exclude(id__in=[u.id for u in users_following]).exclude(id__in=[u.id for u in users_followed_by_following]).distinct()
     posts = Post.objects.filter(author__id=int(pk))
     is_following = False
     user = User.objects.get(id = pk)
@@ -104,10 +129,10 @@ def userProfile(request, pk):
     followertrue = Follow.objects.filter(follower=follower, following=user).first()
     if followertrue:
         is_following = True
-    context = {'posts': posts, 'user': user, 'is_following':is_following}
+    context = {'posts': posts, 'user': user, 'is_following':is_following,
+               "suggetedUsers":suggestions , 'numFollower':numberOfFollower , 'numFollowing':numberofFollowing }
     print('isfollowing',is_following)
     return render(request, 'twitter/profile.html', context)
-
 
 @login_required(login_url='login')
 def updateUser(request):
@@ -151,4 +176,13 @@ def follow_toggle(request, pk):
         context = {'message': message, 'is_following': is_following}
         return redirect(request.META.get("HTTP_REFERER"))
         
+def suggetionForYou(request):
+   following = Follow.objects.filter(follower=request.user)
+   following_users = [follow.following for follow in following]
+# Get the users who are followed by the people you follow
+   suggestions = Follow.objects.filter(follower__in=following_users).exclude(follower=request.user).values_list('following', flat=True).distinct()
+# Get a QuerySet of User objects for the suggested users
+   suggested_users = User.objects.filter(id__in=suggestions)
+ 
     
+        

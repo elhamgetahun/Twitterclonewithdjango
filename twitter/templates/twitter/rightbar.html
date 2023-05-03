@@ -5,32 +5,20 @@
     <div class="container">
       <div class="item">
         <span>Suggestions For You</span>
+        {% for suggetedUser  in suggetedUsers  %}
         <div class="user">
           <div class="userInfo">
             <img
               src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
               alt=""
             />
-            <span>Jane Doe</span>
+            <span>{{suggetedUser.name}}</span>
           </div>
           <div class="buttons">
-            <button>follow</button>
-            <button>dismiss</button>
+            <a href="{% url 'follow-user' suggetedUser.id %}" class="btn btn-primary">follow</a>
           </div>
         </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <span>Jane Doe</span>
-          </div>
-          <div class="buttons">
-            <button>follow</button>
-            <button>dismiss</button>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="item">
         <span>Latest Activities</span>
@@ -81,119 +69,6 @@
             </p>
           </div>
           <span>1 min ago</span>
-        </div>
-      </div>
-      <div class="item">
-        <span>Online Friends</span>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
-        </div>
-        <div class="user">
-          <div class="userInfo">
-            <img
-              src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <div class="online" />
-            <span>Jane Doe</span>
-          </div>
         </div>
       </div>
     </div>
